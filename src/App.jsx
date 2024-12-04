@@ -1,4 +1,5 @@
 import Carroussel from "./components/Carroussel"
+import FormLivros from "./components/FormLivros"
 import ListCardLivros from "./components/ListCardLivros"
 import Menu from "./components/Menu"
 
@@ -9,11 +10,12 @@ function App() {
       <Menu></Menu>
       <main>
         <div className="w3-container w3-padding-16 w3-margin-top">
-          <h1>Minha Petshop</h1>
+          <h1>Minha Livraria</h1>
         </div>
         <Carroussel />
         <div className="w3-row w3-container w3-margin-top">
-          <ListCardLivros></ListCardLivros>
+          {/* <ListCardLivros></ListCardLivros> */}
+          <FormLivros></FormLivros>
         </div>
       </main>
 

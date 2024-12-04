@@ -1,9 +1,17 @@
-import listaLivros from "../data/Livros.json"
+// import listaLivros from "../data/Livros.json"
 import CardLivro from "./CardLivro"
+import { useState, useEffect } from "react"
+import LivroService from '../service/LivroService'
+
 
 
 export default function ListCardLivros() {
-    console.log(listaLivros);
+    const [listaLivros, setListaLivros] = useState([]);
+
+    useEffect(() => {
+        LivroService.listarLivros().then((livros) => setListaLivros(livros));
+    }, [])
+
     return (
         listaLivros.map(livro => 
             <CardLivro key={livro.id} livro={livro} />

@@ -1,0 +1,34 @@
+{
+  "livros": [
+    {
+      "id": 1,
+      "titulo": "O Pequeno Príncipe",
+      "imagem": "pequenoprincipe.jpg",
+      "preco": 51
+    },
+    {
+      "id": 2,
+      "titulo": "Livro A",
+      "imagem": "pequenoprincipe.jpg",
+      "preco": 44
+    },
+    {
+      "id": 3,
+      "titulo": "Livro B",
+      "imagem": "pequenoprincipe.jpg",
+      "preco": 29
+    },
+    {
+      "id": 4,
+      "titulo": "Livro C",
+      "imagem": "pequenoprincipe.jpg",
+      "preco": 81
+    },
+    {
+      "id": "4c09",
+      "titulo": "Dom Casmurro",
+      "imagem": "pequenoprincipe.jpg",
+      "preco": "41"
+    }
+  ]
+}
