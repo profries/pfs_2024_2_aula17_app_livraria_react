@@ -1,26 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import LivroService from "../service/LivroService";
 
-export default function FormLivros(){
-
+export default function FormEditLivros(){
+    const { id } = useParams();
+    const navigate = useNavigate();
     const [titulo, setTitulo] = useState("");
     const [preco, setPreco] = useState(0);
 
-    const cadastrarLivro = (event) => {
+    useEffect(() => {
+        LivroService.buscarLivro(id).then(livro => {
+            console.log("Livro",livro);
+            setTitulo(livro.titulo);
+            setPreco(parseInt(livro.preco));       
+        })
+    }, [])
+
+    const editarLivro = (event) => {
         event.preventDefault();
-        LivroService.inserirLivro({
+        LivroService.atualizarLivro(id, {
             titulo: titulo,
             imagem:"pequenoprincipe.jpg", 
             preco: parseInt(preco)
         }).then(livro => {
-                alert("Livro criado com sucesso!")
+                alert("Livro atualizado com sucesso!")
                 console.log("Livro",livro);
-                setTitulo("");
-                setPreco(0);       
-            })            
+        })            
+
     } 
+    const voltar = () => {
+        navigate(-1);
+    }
     return (
-        <form onSubmit= {cadastrarLivro}>
+        <form onSubmit= {editarLivro}>
             <label>Titulo:</label>
             <input type="text" name="titulo" value={titulo} 
                 onChange={(ev) => setTitulo(ev.target.value)} />
@@ -30,6 +42,7 @@ export default function FormLivros(){
                 onChange={(ev) => setPreco(ev.target.value)} />
             <br />
             <input type="submit" value="Salvar"/>
+            <input type="button" value="Voltar" onClick={voltar} />
         </form>
     )
 }
